@@ -2,6 +2,7 @@ package com.gyojincompany.sbb.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,17 @@ public class QuestionService {
 		
 		
 		return questionDtoList;
+	}
+	
+	//특정 질문글 번호의 레코드를 가져오는 메소드
+	public Question getQuestion(Integer id) {
+		 Optional<Question> op = questionRepository.findById(id);
+		 
+		 if(op.isPresent()) { //참이면 가져올 질문글이 존재
+			 return op.get();
+		 } else { //거짓이면 가져올 질문글이 존재하지 않음
+			 return null;
+		 }
 	}
 	
 }
