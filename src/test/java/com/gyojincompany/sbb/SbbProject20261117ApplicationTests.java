@@ -164,7 +164,12 @@ class SbbProject20261117ApplicationTests {
 	@Test
 	@DisplayName("질문글 삭제 연습") //delete
 	void testJpa3() {
+		//questionRepository.deleteById(3); //3번 질문글 삭제
 		
+		Optional<Question> op = questionRepository.findById(3);
+		if(op.isPresent()) { //참->삭제할 질문글이 존재
+			questionRepository.delete(op.get());
+		}
 	}
 	
 }

@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,7 +37,7 @@ public class Question {
 	//@CreatedDate //자동으로 레코드 생성시 현재날짜시간이 삽입
 	private LocalDateTime createDate;
 	
-	@OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE) //1:n, 일대다 관계 선언
+	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE) //1:n, 일대다 관계 선언
 	//cascade = CascadeType.REMOVE->질문글이 삭제되면 질문글에 달린 답변들도 같이 DB에서 삭제되는 옵션
 	//mappedBy = "question"
 	private List<Answer> answerList; 
