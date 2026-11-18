@@ -162,7 +162,7 @@ class SbbProject20261117ApplicationTests {
 //	}
 	
 	@Test
-	@DisplayName("질문글 삭제 연습")
+	@DisplayName("질문글 삭제 연습") //delete
 	void testJpa3() {
 		
 	}
