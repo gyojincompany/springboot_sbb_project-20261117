@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.gyojincompany.sbb.dto.QuestionDto;
 import com.gyojincompany.sbb.entity.Question;
 import com.gyojincompany.sbb.repository.QuestionRepository;
 import com.gyojincompany.sbb.service.QuestionService;
@@ -27,7 +28,7 @@ public class QuestionController {
 	public String list(Model model) {
 		
 		//모든 질문 리스트 가져오기
-		List<Question> questionList = questionService.getQuestionList();
+		List<QuestionDto> questionList = questionService.getQuestionList();
 		
 		//model 객체에 질문리스트 List 객체 전송해주기
 		model.addAttribute("questionList", questionList);

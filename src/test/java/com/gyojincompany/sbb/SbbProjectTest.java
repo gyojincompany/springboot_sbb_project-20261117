@@ -3,6 +3,7 @@ package com.gyojincompany.sbb;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gyojincompany.sbb.dto.QuestionDto;
 import com.gyojincompany.sbb.entity.Answer;
 import com.gyojincompany.sbb.entity.Question;
 import com.gyojincompany.sbb.repository.AnswerRepository;
@@ -57,23 +59,41 @@ class SbbProjectTest {
 //    }
 	
 //	@Transactional
+//	@Test
+//	@DisplayName("5번 질문글에 달린 답변들 확인 테스트")
+//    void testJpa() {
+//       Optional<Question> op5 = questionRepository.findById(5); //5번 질문글 가져오기
+//       if(op5.isPresent()) { //참->5번 질문글 존재확인
+//    	   Question q5 = op5.get(); //5번 질문글 가져오기
+//    	   
+//    	   List<Answer> answerList = q5.getAnswerList(); //5번 질문글에 달린 답변글들 list
+//    	   
+//    	   System.out.println(answerList.get(0).getContent());
+//    	   //5번 질문글에 달린 답변 중 첫번째 답변의 내용 출력
+//    	   System.out.println(answerList.get(1).getContent());
+//    	   //5번 질문글에 달린 답변 중 두번째 답변의 내용 출력
+//       }
+//       
+//    }
+	
 	@Test
-	@DisplayName("5번 질문글에 달린 답변들 확인 테스트")
-    void testJpa() {
-       Optional<Question> op5 = questionRepository.findById(5); //5번 질문글 가져오기
-       if(op5.isPresent()) { //참->5번 질문글 존재확인
-    	   Question q5 = op5.get(); //5번 질문글 가져오기
-    	   
-    	   List<Answer> answerList = q5.getAnswerList(); //5번 질문글에 달린 답변글들 list
-    	   
-    	   System.out.println(answerList.get(0).getContent());
-    	   //5번 질문글에 달린 답변 중 첫번째 답변의 내용 출력
-    	   System.out.println(answerList.get(1).getContent());
-    	   //5번 질문글에 달린 답변 중 두번째 답변의 내용 출력
-       }
-       
-    }
-	
-	
+	void jpaTest() {
+		List<Question> questionList = questionRepository.findAll();
+		
+		List<QuestionDto> questionDtoList = new ArrayList<>(); 
+		
+		for(Question question : questionList) {
+			QuestionDto qDto = new QuestionDto();
+			qDto.setId(question.getId());
+			System.out.println(qDto.getId());
+			qDto.setSubject(question.getSubject());
+			qDto.setContent(question.getContent());
+			qDto.setCreateDate(question.getCreateDate());
+			
+			questionDtoList.add(qDto);
+		}
+		
+		System.out.println(questionDtoList.get(0).getSubject());
+	}
 
 }
