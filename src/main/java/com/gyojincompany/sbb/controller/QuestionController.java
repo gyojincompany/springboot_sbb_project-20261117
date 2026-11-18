@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.gyojincompany.sbb.entity.Question;
 import com.gyojincompany.sbb.repository.QuestionRepository;
+import com.gyojincompany.sbb.service.QuestionService;
 
 @Controller
 public class QuestionController {
 	
 	@Autowired
-	private QuestionRepository questionRepository;
+	private QuestionService questionService;
 	
 	@GetMapping("/") //root 요청->index.html
 	public String root() {
@@ -26,7 +27,7 @@ public class QuestionController {
 	public String list(Model model) {
 		
 		//모든 질문 리스트 가져오기
-		List<Question> questionList = questionRepository.findAll();
+		List<Question> questionList = questionService.getQuestionList();
 		
 		//model 객체에 질문리스트 List 객체 전송해주기
 		model.addAttribute("questionList", questionList);
