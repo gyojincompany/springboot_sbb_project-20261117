@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SBB - 질문과 지식을 나누는 공간</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+
+<body>
+
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-inner">
+
+            <a th:href="@{/}" class="logo">
+                <span class="material-icons-round">forum</span>
+                SBB
+            </a>
+
+            <nav class="nav-menu">
+                <a th:href="@{/question/list}">질문 게시판</a>
+                <a href="#service">서비스 소개</a>
+            </nav>
+
+            <div class="header-actions">
+                <a th:href="@{/user/login}" class="login-btn">로그인</a>
+                <a th:href="@{/user/signup}" class="signup-btn">회원가입</a>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- 메인 -->
+    <main class="main-container">
+
+        <!-- 메인 소개 -->
+        <section class="hero-section">
+
+            <div class="hero-content">
+
+                <div class="hero-label">
+                    <span class="material-icons-round">auto_awesome</span>
+                    SBB COMMUNITY
+                </div>
+
+                <h1>
+                    질문하고,<br>
+                    <span>함께 성장하세요.</span>
+                </h1>
+
+                <p>
+                    궁금한 것을 질문하고 다양한 사람들과 지식을 나누세요.<br>
+                    작은 질문 하나가 새로운 배움의 시작이 됩니다.
+                </p>
+
+                <div class="hero-buttons">
+                    <a th:href="@{/question/list}" class="primary-btn">
+                        질문 게시판 바로가기
+                        <span class="material-icons-round">arrow_forward</span>
+                    </a>
+
+                    <a th:href="@{/user/signup}" class="secondary-btn">
+                        회원가입
+                    </a>
+                </div>
+
+            </div>
+
+
+            <!-- 오른쪽 디자인 -->
+            <div class="hero-visual">
+
+                <div class="visual-circle circle-1"></div>
+                <div class="visual-circle circle-2"></div>
+
+                <div class="visual-card">
+
+                    <div class="visual-icon">
+                        <span class="material-icons-round">lightbulb</span>
+                    </div>
+
+                    <span class="visual-small">SHARE YOUR KNOWLEDGE</span>
+
+                    <h3>
+                        함께 질문하고<br>
+                        함께 답을 찾아가는 공간
+                    </h3>
+
+                    <div class="visual-line"></div>
+
+                    <div class="visual-bottom">
+                        <span class="material-icons-round">forum</span>
+                        SBB Question Community
+                    </div>
+
+                </div>
+
+                <div class="floating-icon floating-1">
+                    <span class="material-icons-round">code</span>
+                </div>
+
+                <div class="floating-icon floating-2">
+                    <span class="material-icons-round">psychology</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Bento Grid -->
+        <section class="bento-section" id="service">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">EXPLORE SBB</span>
+                    <h2>무엇을 할 수 있나요?</h2>
+                    <p>SBB에서 다양한 지식과 정보를 나눠보세요.</p>
+                </div>
+            </div>
+
+
+            <div class="bento-grid">
+
+                <!-- 질문 게시판 -->
+                <article class="bento-card question-card">
+
+                    <div class="card-icon purple">
+                        <span class="material-icons-round">forum</span>
+                    </div>
+
+                    <span class="card-label">QUESTION BOARD</span>
+
+                    <h3>자유롭게 질문하세요.</h3>
+
+                    <p>
+                        궁금한 내용을 게시글로 작성하고<br>
+                        다른 사람들과 의견을 나눠보세요.
+                    </p>
+
+                    <a th:href="@{/question/list}" class="card-link">
+                        질문 게시판 이동
+                        <span class="material-icons-round">arrow_forward</span>
+                    </a>
+
+                    <span class="background-icon material-icons-round">forum</span>
+
+                </article>
+
+
+                <!-- 회원가입 -->
+                <article class="bento-card signup-card">
+
+                    <div class="card-icon blue">
+                        <span class="material-icons-round">person_add</span>
+                    </div>
+
+                    <span class="card-label">JOIN COMMUNITY</span>
+
+                    <h3>새로운 시작,<br>회원가입</h3>
+
+                    <p>
+                        SBB의 회원이 되어<br>
+                        지식 공유에 참여해 보세요.
+                    </p>
+
+                    <a th:href="@{/user/signup}" class="card-link">
+                        회원가입 하기
+                        <span class="material-icons-round">arrow_forward</span>
+                    </a>
+
+                </article>
+
+
+                <!-- 지식 공유 -->
+                <article class="bento-card knowledge-card">
+
+                    <div class="knowledge-visual">
+                        <div class="knowledge-circle">
+                            <span class="material-icons-round">psychology</span>
+                        </div>
+
+                        <div class="knowledge-small-icon">
+                            <span class="material-icons-round">lightbulb</span>
+                        </div>
+                    </div>
+
+                    <span class="card-label">SHARE KNOWLEDGE</span>
+
+                    <h3>지식을 나누고<br>함께 성장하세요.</h3>
+
+                    <p>
+                        서로의 경험과 노하우를 공유하며<br>
+                        더 넓은 지식을 만들어 갑니다.
+                    </p>
+
+                </article>
+
+
+                <!-- 로그인 -->
+                <article class="bento-card login-card">
+
+                    <div class="card-icon orange">
+                        <span class="material-icons-round">login</span>
+                    </div>
+
+                    <span class="card-label">WELCOME BACK</span>
+
+                    <h3>다시 만나서 반갑습니다.</h3>
+
+                    <p>
+                        로그인하고 SBB 커뮤니티의<br>
+                        다양한 서비스를 이용해 보세요.
+                    </p>
+
+                    <a th:href="@{/user/login}" class="card-link">
+                        로그인 하기
+                        <span class="material-icons-round">arrow_forward</span>
+                    </a>
+
+                </article>
+
+
+                <!-- 커뮤니티 -->
+                <article class="bento-card community-card">
+
+                    <div class="community-top">
+                        <div class="card-icon green">
+                            <span class="material-icons-round">groups</span>
+                        </div>
+
+                        <span class="card-label">SBB COMMUNITY</span>
+                    </div>
+
+                    <h3>혼자 고민하지 마세요.</h3>
+
+                    <p>
+                        질문과 답변을 통해 서로 도움을 주고받는<br>
+                        지식 공유 커뮤니티 SBB입니다.
+                    </p>
+
+                    <a th:href="@{/question/list}" class="community-button">
+                        커뮤니티 둘러보기
+                        <span class="material-icons-round">arrow_forward</span>
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- 하단 배너 -->
+        <section class="bottom-banner">
+
+            <div>
+                <span class="banner-label">START WITH SBB</span>
+
+                <h2>궁금한 것이 있다면 지금 시작하세요.</h2>
+
+                <p>
+                    질문하고 답변하며 함께 성장하는 지식 커뮤니티
+                </p>
+            </div>
+
+            <a th:href="@{/user/signup}" class="banner-button">
+                지금 시작하기
+                <span class="material-icons-round">arrow_forward</span>
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- 푸터 -->
+    <footer class="footer">
+
+        <div class="footer-inner">
+
+            <a th:href="@{/}" class="logo footer-logo">
+                <span class="material-icons-round">forum</span>
+                SBB
+            </a>
+
+            <p>질문하고 배우며 함께 성장하는 지식 커뮤니티</p>
+
+            <span class="copyright">
+                © 2026 SBB Community. All rights reserved.
+            </span>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

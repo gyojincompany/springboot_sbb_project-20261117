@@ -17,6 +17,11 @@ public class QuestionController {
 	@Autowired
 	private QuestionRepository questionRepository;
 	
+	@GetMapping("/") //root 요청->index.html
+	public String root() {
+		return "index";
+	}
+	
 	@GetMapping("/question/list") //모든 질문 목록 요청
 	public String list(Model model) {
 		

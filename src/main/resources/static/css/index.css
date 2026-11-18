@@ -1,0 +1,907 @@
+
+/* =========================
+   기본 설정
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background: #f6f7fb;
+    color: #25243a;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================
+   헤더
+========================= */
+
+.header {
+    height: 75px;
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeF4;
+}
+
+.header-inner {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    color: #6252df;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.logo .material-icons-round {
+    font-size: 30px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-menu a {
+    color: #66677b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-menu a:hover {
+    color: #6252df;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.login-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #55566a;
+}
+
+.signup-btn {
+    padding: 11px 21px;
+    border-radius: 12px;
+    background: #6252df;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.signup-btn:hover {
+    background: #4938c5;
+}
+
+
+/* =========================
+   메인 컨테이너
+========================= */
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 70px;
+}
+
+
+/* =========================
+   히어로 영역
+========================= */
+
+.hero-section {
+    min-height: 410px;
+    padding: 55px 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: linear-gradient(
+        120deg,
+        #eeebff,
+        #e8edff
+    );
+
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 14px;
+    border-radius: 30px;
+
+    background: white;
+    color: #6757dc;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.hero-label .material-icons-round {
+    font-size: 17px;
+}
+
+.hero-content h1 {
+    margin-top: 23px;
+    font-size: 48px;
+    line-height: 1.25;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.hero-content h1 span {
+    color: #6252df;
+}
+
+.hero-content p {
+    margin-top: 17px;
+    color: #77788d;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 14px 21px;
+    border-radius: 12px;
+
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.primary-btn {
+    background: #6252df;
+    color: white;
+    box-shadow: 0 7px 18px rgba(98, 82, 223, 0.2);
+}
+
+.primary-btn:hover {
+    background: #4938c5;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background: white;
+    color: #57576c;
+}
+
+.secondary-btn:hover {
+    transform: translateY(-2px);
+}
+
+.primary-btn .material-icons-round {
+    font-size: 18px;
+}
+
+
+/* =========================
+   히어로 오른쪽 디자인
+========================= */
+
+.hero-visual {
+    width: 390px;
+    height: 300px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visual-card {
+    width: 310px;
+    padding: 30px;
+
+    position: relative;
+    z-index: 2;
+
+    background: white;
+    border-radius: 25px;
+
+    box-shadow: 0 20px 50px rgba(60, 55, 120, 0.13);
+
+    transform: rotate(3deg);
+}
+
+.visual-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+    background: #eeebff;
+    color: #6252df;
+}
+
+.visual-icon .material-icons-round {
+    font-size: 30px;
+}
+
+.visual-small {
+    display: block;
+    margin-top: 22px;
+
+    color: #8c82df;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.visual-card h3 {
+    margin-top: 10px;
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.visual-line {
+    height: 4px;
+    width: 55px;
+    margin-top: 20px;
+
+    border-radius: 10px;
+    background: #6958e5;
+}
+
+.visual-bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 20px;
+
+    color: #9999aa;
+    font-size: 10px;
+}
+
+.visual-bottom .material-icons-round {
+    color: #6555df;
+    font-size: 19px;
+}
+
+.visual-circle {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.circle-1 {
+    width: 230px;
+    height: 230px;
+    right: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.circle-2 {
+    width: 150px;
+    height: 150px;
+    left: 0;
+    bottom: 0;
+    background: rgba(151, 139, 241, 0.13);
+}
+
+.floating-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    z-index: 3;
+
+    border-radius: 17px;
+    background: white;
+
+    box-shadow: 0 10px 25px rgba(50, 50, 100, 0.12);
+    color: #6555df;
+}
+
+.floating-icon .material-icons-round {
+    font-size: 27px;
+}
+
+.floating-1 {
+    top: 10px;
+    right: 10px;
+    transform: rotate(10deg);
+}
+
+.floating-2 {
+    bottom: 5px;
+    left: 5px;
+    transform: rotate(-10deg);
+}
+
+
+/* =========================
+   Bento Grid 영역
+========================= */
+
+.bento-section {
+    margin-top: 70px;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-label {
+    color: #7769dc;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin-top: 7px;
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.section-heading p {
+    margin-top: 5px;
+    color: #898a9b;
+    font-size: 13px;
+}
+
+
+/* 벤토 그리드 */
+
+.bento-grid {
+    display: grid;
+
+    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-rows: 270px 250px;
+
+    gap: 18px;
+}
+
+.bento-card {
+    padding: 28px;
+
+    position: relative;
+    overflow: hidden;
+
+    background: white;
+    border: 1px solid #eeeeF4;
+    border-radius: 23px;
+
+    transition: 0.25s;
+}
+
+.bento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 13px 30px rgba(40, 40, 80, 0.07);
+}
+
+
+/* 질문 게시판 */
+
+.question-card {
+    grid-column: 1 / 3;
+    grid-row: 1;
+
+    background: #ffffff;
+}
+
+.card-icon {
+    width: 49px;
+    height: 49px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+}
+
+.card-icon .material-icons-round {
+    font-size: 25px;
+}
+
+.purple {
+    background: #eeebff;
+    color: #6958e5;
+}
+
+.blue {
+    background: #e9f2ff;
+    color: #4b8bdc;
+}
+
+.orange {
+    background: #fff0df;
+    color: #e79b3d;
+}
+
+.green {
+    background: #e4f7ed;
+    color: #36a778;
+}
+
+.card-label {
+    display: block;
+    margin-top: 17px;
+
+    color: #9898aa;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.bento-card h3 {
+    margin-top: 10px;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.bento-card p {
+    margin-top: 8px;
+    color: #88899b;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 18px;
+
+    color: #6555df;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.card-link .material-icons-round {
+    font-size: 17px;
+}
+
+.background-icon {
+    position: absolute;
+    right: 25px;
+    bottom: 5px;
+
+    color: #f5f3ff;
+    font-size: 150px;
+}
+
+
+/* 회원가입 */
+
+.signup-card {
+    grid-column: 3;
+    grid-row: 1;
+
+    background: #edf3ff;
+}
+
+.signup-card .card-label {
+    color: #7397d1;
+}
+
+
+/* 지식 공유 */
+
+.knowledge-card {
+    grid-column: 1;
+    grid-row: 2;
+
+    background: #f1efff;
+}
+
+.knowledge-card .card-label {
+    color: #8073d7;
+}
+
+.knowledge-visual {
+    position: absolute;
+    right: 22px;
+    top: 25px;
+}
+
+.knowledge-circle {
+    width: 85px;
+    height: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: white;
+    color: #6858df;
+}
+
+.knowledge-circle .material-icons-round {
+    font-size: 45px;
+}
+
+.knowledge-small-icon {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+
+    border-radius: 12px;
+    background: #ffefcf;
+    color: #e5a03b;
+}
+
+.knowledge-small-icon .material-icons-round {
+    font-size: 20px;
+}
+
+
+/* 로그인 */
+
+.login-card {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.login-card .card-label {
+    color: #e0a34e;
+}
+
+
+/* 커뮤니티 */
+
+.community-card {
+    grid-column: 3;
+    grid-row: 2;
+
+    background: linear-gradient(145deg, #6252df, #4939c4);
+    color: white;
+}
+
+.community-card .card-label {
+    color: #d2cbff;
+}
+
+.community-card h3 {
+    margin-top: 23px;
+    font-size: 21px;
+}
+
+.community-card p {
+    color: #dedaff;
+}
+
+.community-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 20px;
+    padding: 11px 15px;
+
+    border-radius: 10px;
+    background: white;
+    color: #5847d4;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.community-button .material-icons-round {
+    font-size: 17px;
+}
+
+
+/* =========================
+   하단 배너
+========================= */
+
+.bottom-banner {
+    margin-top: 55px;
+    padding: 35px 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 22px;
+    background: #eeecff;
+}
+
+.banner-label {
+    color: #7769dc;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.bottom-banner h2 {
+    margin-top: 8px;
+    font-size: 23px;
+}
+
+.bottom-banner p {
+    margin-top: 5px;
+    color: #89899d;
+    font-size: 12px;
+}
+
+.banner-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 15px 22px;
+    border-radius: 12px;
+
+    background: #6252df;
+    color: white;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.banner-button .material-icons-round {
+    font-size: 18px;
+}
+
+
+/* =========================
+   푸터
+========================= */
+
+.footer {
+    background: white;
+    border-top: 1px solid #eeeeF4;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-size: 21px;
+}
+
+.footer-logo .material-icons-round {
+    font-size: 25px;
+}
+
+.footer-inner p {
+    color: #9293a2;
+    font-size: 11px;
+}
+
+.copyright {
+    margin-left: auto;
+    color: #a0a0ae;
+    font-size: 10px;
+}
+
+
+/* =========================
+   태블릿
+========================= */
+
+@media (max-width: 900px) {
+
+    .hero-section {
+        padding: 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-visual {
+        width: 300px;
+        transform: scale(0.85);
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 270px 250px 250px;
+    }
+
+    .question-card {
+        grid-column: 1 / 3;
+        grid-row: 1;
+    }
+
+    .signup-card {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .knowledge-card {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .login-card {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .community-card {
+        grid-column: 2;
+        grid-row: 3;
+    }
+}
+
+
+/* =========================
+   모바일
+========================= */
+
+@media (max-width: 600px) {
+
+    .header {
+        height: 65px;
+    }
+
+    .header-inner {
+        padding: 0 15px;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .main-container {
+        padding: 20px 15px 45px;
+    }
+
+    .hero-section {
+        padding: 35px 23px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 12px;
+    }
+
+    .hero-buttons {
+        flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        padding: 12px 14px;
+        font-size: 11px;
+    }
+
+    .hero-visual {
+        width: 100%;
+        height: 270px;
+        margin-top: 20px;
+        transform: scale(0.9);
+    }
+
+    .bento-section {
+        margin-top: 45px;
+    }
+
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+    .bento-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bento-card {
+        min-height: 240px;
+    }
+
+    .question-card {
+        min-height: 270px;
+    }
+
+    .signup-card,
+    .knowledge-card,
+    .login-card {
+        min-height: 240px;
+    }
+
+    .community-card {
+        min-height: 260px;
+    }
+
+    .bottom-banner {
+        padding: 28px 23px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .bottom-banner h2 {
+        font-size: 19px;
+    }
+
+    .footer-inner {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .copyright {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+}
