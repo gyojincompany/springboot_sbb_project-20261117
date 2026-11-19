@@ -10,6 +10,7 @@ public interface QuestionRepository extends JpaRepository<Question, Integer>{
 	
 	List<Question> findBySubject(String subject); 
 	//제목으로 질문글 찾기 메소드
+		
 	
 	List<Question> findBySubjectLike(String subject);
 	List<Question> findBySubjectContaining(String subject);
