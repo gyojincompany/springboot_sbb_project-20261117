@@ -44,6 +44,29 @@ body {
     border-top: 1px solid #fed7d7;
 }
 
+/* Validation / 서버 에러 알림 박스 */
+.validation-alert {
+    background-color: #fff5f5;
+    border: 1px solid #feb2b2;
+    border-left: 5px solid #dc2626;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    color: #7f1d1d;
+}
+
+.validation-alert-title {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.validation-alert-list {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+}
+
 /* 질문 헤더 영역 */
 .question-header {
     border-bottom: 2px solid #dee2e6;
@@ -177,6 +200,23 @@ body {
     outline: none;
     border-color: #2563eb;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-textarea.input-error {
+    border-color: #dc2626;
+    background-color: #fffafa;
+}
+
+.form-textarea.input-error:focus {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.field-error {
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #dc2626;
 }
 
 .form-actions {

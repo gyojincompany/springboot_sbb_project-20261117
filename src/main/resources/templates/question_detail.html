@@ -67,19 +67,65 @@
             <div class="card">
                 <div class="card-header">답변 등록</div>
                 <div class="card-body">
-                    <form th:action="@{|/answer/create/${question.id}|}" method="post">
+
+                    <!-- 답변 validation 단일 문자열 에러(answerErrMsg)가 전달된 경우 -->
+                    <div th:if="${answerErrMsg != null}" class="validation-alert" role="alert">
+                        <p class="validation-alert-title">답변 입력값을 확인해 주세요.</p>
+                        <ul class="validation-alert-list">
+                            <li th:text="${answerErrMsg}">답변 에러 메시지</li>
+                        </ul>
+                    </div>
+
+                    <!-- Case A: AnswerForm(@Valid + BindingResult)을 사용하는 경우 -->
+                    <form th:if="${answerForm != null}"
+                          th:action="@{|/answer/create/${question.id}|}"
+                          th:object="${answerForm}"
+                          method="post"
+                          novalidate>
+
+                        <div th:if="${#fields.hasGlobalErrors()}" class="validation-alert" role="alert">
+                            <p class="validation-alert-title">답변 입력값을 확인해 주세요.</p>
+                            <ul class="validation-alert-list">
+                                <li th:each="err : ${#fields.globalErrors()}" th:text="${err}">전체 에러</li>
+                            </ul>
+                        </div>
+
                         <div class="form-group">
                             <label for="content" class="form-label">답변 내용</label>
                             <textarea id="content"
-                                      name="content"
+                                      th:field="*{content}"
+                                      th:classappend="${#fields.hasErrors('content')} ? 'input-error' : ''"
                                       class="form-textarea"
-                                      placeholder="답변을 입력하세요."
-                                      required></textarea>
+                                      placeholder="답변을 입력하세요."></textarea>
+                            <div th:if="${#fields.hasErrors('content')}" class="field-error">
+                                <span th:each="err : ${#fields.errors('content')}" th:text="${err}">답변 내용 에러 메시지</span>
+                            </div>
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary">답변 등록</button>
                         </div>
                     </form>
+
+                    <!-- Case B: Form 객체 없이 @RequestParam + Model(answerErrMsg, answerContent)로 처리하는 경우 -->
+                    <form th:if="${answerForm == null}"
+                          th:action="@{|/answer/create/${question.id}|}"
+                          method="post"
+                          novalidate>
+
+                        <div class="form-group">
+                            <label for="contentPlain" class="form-label">답변 내용</label>
+                            <textarea id="contentPlain"
+                                      name="content"
+                                      th:text="${answerContent}"
+                                      th:classappend="${answerErrMsg != null} ? 'input-error' : ''"
+                                      class="form-textarea"
+                                      placeholder="답변을 입력하세요."></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">답변 등록</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
 
