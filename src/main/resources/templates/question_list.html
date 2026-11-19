@@ -2,50 +2,106 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>질문 목록 게시판</title>
-    <!-- 디자인을 위해 Bootstrap 5 CDN을 포함했습니다 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- 분리된 일반 CSS 파일 연결 -->
+    <link rel="stylesheet" th:href="@{/css/question-list.css}">
 </head>
 <body>
-    <div class="container my-5">
-        <h2 class="mb-4">질문 목록</h2>
-        
-        <table class="table table-hover">
-            <thead class="table-dark text-center">
+    <div class="board-container">
+        <div class="board-header">
+            <h2 class="board-title">질문 목록</h2>
+            <a th:href="@{/question/create}" class="btn-primary">질문 등록하기</a>
+        </div>
+
+        <table class="board-table">
+            <thead>
                 <tr>
-                    <th style="width: 10%;">번호</th>
-                    <th style="width: 60%;">제목</th>
-                    <th style="width: 30%;">작성일시</th>
+                    <th class="col-no">번호</th>
+                    <th class="col-subject">제목</th>
+                    <th class="col-date">작성일시</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- 질문 목록이 비어있는 경우 -->
-                <tr th:if="${#lists.isEmpty(questionList)}">
-                    <td colspan="3" class="text-center py-4 text-muted">
+                <tr th:if="${questionList.isEmpty()}">
+                    <td colspan="3" class="empty-row">
                         등록된 질문이 없습니다.
                     </td>
                 </tr>
-                
-                <!-- 질문 목록을 순회하며 출력 -->
-                <tr class="text-center" th:each="question, loop : ${questionList}">
-                    <!-- 번호 (1부터 시작하려면 loop.count, 역순이 필요하면 loop.index 등을 활용) -->
-                    <td th:text="${loop.count}">1</td>
-                    
-                    <!-- 제목 (상세보기 링크 포함) -->
-                    <td class="text-start">
-                        <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}" class="text-decoration-none">제목</a>
+
+                <!-- 질문 목록 순회 출력 (내림차순 번호: 최근 글이 가장 큰 번호) -->
+                <tr th:each="question, loop : ${questionList}">
+                    <td class="text-center"
+                        th:text="${questionList.totalElements - (questionList.number * questionList.size) - loop.index}">
+                        1
                     </td>
-                    
-                    <!-- 작성일시 (LocalDateTime 타입 포맷팅 예시) -->
-                    <td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}">2026-06-07 12:00</td>
+                    <td class="text-left">
+                        <a th:href="@{|/question/detail/${question.id}|}"
+                           th:text="${question.subject}"
+                           class="question-link">
+                            제목
+                        </a>
+                    </td>
+                    <td class="text-center date-text"
+                        th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}">
+                        2026-06-07 12:00
+                    </td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- 질문 등록 버튼 -->
-        <div class="text-end mt-3">
-            <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
-        </div>
+        <!-- 페이징 영역 (페이지가 1개 이상일 때만 표시, 최대 10개 페이지 번호 노출) -->
+        <nav class="pagination-wrapper" aria-label="페이지 네비게이션"
+             th:if="${!questionList.isEmpty()}"
+             th:with="blockSize=10,
+                      startPage=${(questionList.number / blockSize) * blockSize},
+                      tempEnd=${startPage + blockSize - 1},
+                      endPage=${questionList.totalPages == 0 ? 0 : (tempEnd >= questionList.totalPages ? questionList.totalPages - 1 : tempEnd)}">
+
+            <ul class="pagination">
+                <!-- 이전 블록(10페이지 전) 이동 버튼 -->
+                <li class="page-item" th:classappend="${startPage == 0} ? 'disabled'">
+                    <a class="page-link"
+                       th:if="${startPage > 0}"
+                       th:href="@{|?page=${startPage - 1}|}">&laquo;</a>
+                    <span class="page-link" th:unless="${startPage > 0}">&laquo;</span>
+                </li>
+
+                <!-- 이전 페이지 버튼 -->
+                <li class="page-item" th:classappend="${!questionList.hasPrevious()} ? 'disabled'">
+                    <a class="page-link"
+                       th:if="${questionList.hasPrevious()}"
+                       th:href="@{|?page=${questionList.number - 1}|}">이전</a>
+                    <span class="page-link" th:unless="${questionList.hasPrevious()}">이전</span>
+                </li>
+
+                <!-- 페이지 번호 링크 (최대 10개) -->
+                <li class="page-item"
+                    th:each="pageNum : ${#numbers.sequence(startPage, endPage)}"
+                    th:classappend="${pageNum == questionList.number} ? 'active'">
+                    <a class="page-link"
+                       th:href="@{|?page=${pageNum}|}"
+                       th:text="${pageNum + 1}">1</a>
+                </li>
+
+                <!-- 다음 페이지 버튼 -->
+                <li class="page-item" th:classappend="${!questionList.hasNext()} ? 'disabled'">
+                    <a class="page-link"
+                       th:if="${questionList.hasNext()}"
+                       th:href="@{|?page=${questionList.number + 1}|}">다음</a>
+                    <span class="page-link" th:unless="${questionList.hasNext()}">다음</span>
+                </li>
+
+                <!-- 다음 블록(10페이지 후) 이동 버튼 -->
+                <li class="page-item" th:classappend="${endPage >= questionList.totalPages - 1} ? 'disabled'">
+                    <a class="page-link"
+                       th:if="${endPage < questionList.totalPages - 1}"
+                       th:href="@{|?page=${endPage + 1}|}">&raquo;</a>
+                    <span class="page-link" th:unless="${endPage < questionList.totalPages - 1}">&raquo;</span>
+                </li>
+            </ul>
+        </nav>
     </div>
 </body>
 </html>

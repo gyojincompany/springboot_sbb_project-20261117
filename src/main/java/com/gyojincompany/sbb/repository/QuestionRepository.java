@@ -1,5 +1,7 @@
 package com.gyojincompany.sbb.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.gyojincompany.sbb.entity.Question;
@@ -28,5 +30,9 @@ public interface QuestionRepository extends JpaRepository<Question, Integer>{
 	
 	//delete from question where subject like ?;
 	void deleteBySubjectLike(String keyword);
+	
+	//페이징 처리 후 질문글 목록 불러오기 메소드
+	Page<Question> findAll(Pageable pageable); 
+	//pageable->사용자가 클릭한 페이지 번호, 한 페이지당 보여질 질문글의 갯수
 	
 }

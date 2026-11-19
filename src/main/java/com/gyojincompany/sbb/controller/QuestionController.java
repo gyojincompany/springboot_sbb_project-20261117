@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,14 +34,14 @@ public class QuestionController {
 		return "index";
 	}
 	
-	@GetMapping("/list") //모든 질문 목록 요청
-	public String list(Model model) {
+	@GetMapping("/list") //모든 질문 목록 요청->question/list?page=3
+	public String list(Model model,@RequestParam(value = "page", defaultValue = "0") int page) {
 		
-		//모든 질문 리스트 가져오기
-		List<QuestionDto> questionList = questionService.getQuestionList();
+		//사용자가 클릭한 페이지 번호에 해당하는 질문 리스트 가져오기(질문 10개 씩)
+		Page<Question> pageList = questionService.getQuestionList(page);
 		
 		//model 객체에 질문리스트 List 객체 전송해주기
-		model.addAttribute("questionList", questionList);
+		model.addAttribute("questionList", pageList);
 		
 		return "question_list"; //.html은 쓰지 않음
 	}

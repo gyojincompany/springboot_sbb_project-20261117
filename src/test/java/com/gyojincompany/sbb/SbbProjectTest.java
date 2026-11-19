@@ -18,6 +18,7 @@ import com.gyojincompany.sbb.entity.Answer;
 import com.gyojincompany.sbb.entity.Question;
 import com.gyojincompany.sbb.repository.AnswerRepository;
 import com.gyojincompany.sbb.repository.QuestionRepository;
+import com.gyojincompany.sbb.service.QuestionService;
 
 @SpringBootTest
 class SbbProjectTest {
@@ -27,6 +28,9 @@ class SbbProjectTest {
 	
 	@Autowired
 	private QuestionRepository questionRepository;
+	
+	@Autowired
+	private QuestionService questionService;
 	
 //	@Test
 //	@DisplayName("답변글 저장 테스트")
@@ -99,7 +103,11 @@ class SbbProjectTest {
 	@Test
 	@DisplayName("dummy data 300개 생성")
 	public void testJpa() {
-		
+		for(int i=1;i<=300;i++) {
+			String subject = "테스트 질문 데이터입니다 - "+i;
+			String content = "테스트 질문 내용입니다 - "+i;
+			questionService.createQuestion(subject, content); //질문 등록 메소드 호출
+		}
 	}
 
 }
