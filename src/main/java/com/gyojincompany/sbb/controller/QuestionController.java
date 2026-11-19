@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gyojincompany.sbb.dto.QuestionDto;
+import com.gyojincompany.sbb.dto.QuestionForm;
 import com.gyojincompany.sbb.entity.Question;
 import com.gyojincompany.sbb.repository.QuestionRepository;
 import com.gyojincompany.sbb.service.QuestionService;
@@ -63,11 +64,10 @@ public class QuestionController {
 	}
 	
 	@PostMapping("/create") //요청의 이름은 같으나 get, post 방식이 다르므로 같은 요청이름으로 생성 가능
-	public String questionCreate(@RequestParam(value = "subject") String subject, 
-			@RequestParam(value = "content") String content) {
+	public String questionCreate(QuestionForm questionForm) {
 		
 		// Service 에서 db에 질문을 저장하는 메소드를 호출
-		questionService.createQuestion(subject, content);
+		questionService.createQuestion(questionForm.getSubject(), questionForm.getContent());
 		
 		return "redirect:/question/list";
 		
