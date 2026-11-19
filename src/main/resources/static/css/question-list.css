@@ -222,4 +222,45 @@ body {
         padding: 0 6px;
         font-size: 12px;
     }
+    
+.subject-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+}
+
+.question-link {
+    flex: 1 1 auto;
+    min-width: 0;
+    color: #111827;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.question-link:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.answer-count {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #2563eb;
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 999px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
 }

@@ -37,11 +37,18 @@
                         1
                     </td>
                     <td class="text-left">
-                        <a th:href="@{|/question/detail/${question.id}|}"
-                           th:text="${question.subject}"
-                           class="question-link">
-                            제목
-                        </a>
+                        <div class="subject-wrapper">
+                            <a th:href="@{|/question/detail/${question.id}|}"
+                               th:text="${question.subject}"
+                               class="question-link">
+                                제목
+                            </a>
+                            <span class="answer-count"
+                                  th:if="${!#lists.isEmpty(question.answerList)}"
+                                  th:text="${'[' + #lists.size(question.answerList) + ']'}">
+                                [3]
+                            </span>
+                        </div>
                     </td>
                     <td class="text-center date-text"
                         th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}">
