@@ -10,6 +10,9 @@ public interface QuestionRepository extends JpaRepository<Question, Integer>{
 	
 	List<Question> findBySubject(String subject); 
 	//제목으로 질문글 찾기 메소드
+	
+	//모든 질문글을 등록일의 내림차순으로 정렬하여 반환 메소드
+	List<Question> findAllByOrderByCreateDateDesc();
 		
 	
 	List<Question> findBySubjectLike(String subject);

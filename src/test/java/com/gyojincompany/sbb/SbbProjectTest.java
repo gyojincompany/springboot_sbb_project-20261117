@@ -76,24 +76,30 @@ class SbbProjectTest {
 //       
 //    }
 	
+//	@Test
+//	void jpaTest() {
+//		List<Question> questionList = questionRepository.findAll();
+//		
+//		List<QuestionDto> questionDtoList = new ArrayList<>(); 
+//		
+//		for(Question question : questionList) {
+//			QuestionDto qDto = new QuestionDto();
+//			qDto.setId(question.getId());
+//			System.out.println(qDto.getId());
+//			qDto.setSubject(question.getSubject());
+//			qDto.setContent(question.getContent());
+//			qDto.setCreateDate(question.getCreateDate());
+//			
+//			questionDtoList.add(qDto);
+//		}
+//		
+//		System.out.println(questionDtoList.get(0).getSubject());
+//	}
+	
 	@Test
-	void jpaTest() {
-		List<Question> questionList = questionRepository.findAll();
+	@DisplayName("dummy data 300개 생성")
+	public void testJpa() {
 		
-		List<QuestionDto> questionDtoList = new ArrayList<>(); 
-		
-		for(Question question : questionList) {
-			QuestionDto qDto = new QuestionDto();
-			qDto.setId(question.getId());
-			System.out.println(qDto.getId());
-			qDto.setSubject(question.getSubject());
-			qDto.setContent(question.getContent());
-			qDto.setCreateDate(question.getCreateDate());
-			
-			questionDtoList.add(qDto);
-		}
-		
-		System.out.println(questionDtoList.get(0).getSubject());
 	}
 
 }

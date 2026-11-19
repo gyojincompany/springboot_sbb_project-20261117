@@ -21,8 +21,10 @@ public class QuestionService {
 	@Autowired
 	private QuestionRepository questionRepository;
 	
-	public List<QuestionDto> getQuestionList() { //모든 질문 목록을 반환하는 메소드
-		List<Question> questionList = questionRepository.findAll();
+	//모든 질문 목록을 반환하는 메소드
+	public List<QuestionDto> getQuestionList() { 
+		List<Question> questionList = questionRepository.findAllByOrderByCreateDateDesc(); 
+		//질문 등록일의 내림차순으로 정렬하여 글목록이 반환
 		
 		List<QuestionDto> questionDtoList = new ArrayList<>();
 		
@@ -34,8 +36,7 @@ public class QuestionService {
 			qDto.setCreateDate(question.getCreateDate());
 			
 			questionDtoList.add(qDto);
-		}
-		
+		}		
 		
 		return questionDtoList;
 	}
