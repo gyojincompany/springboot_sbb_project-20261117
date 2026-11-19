@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,8 @@ import com.gyojincompany.sbb.dto.QuestionForm;
 import com.gyojincompany.sbb.entity.Question;
 import com.gyojincompany.sbb.repository.QuestionRepository;
 import com.gyojincompany.sbb.service.QuestionService;
+
+import jakarta.validation.Valid;
 
 @RequestMapping("/question")
 @Controller
@@ -64,7 +67,11 @@ public class QuestionController {
 	}
 	
 	@PostMapping("/create") //요청의 이름은 같으나 get, post 방식이 다르므로 같은 요청이름으로 생성 가능
-	public String questionCreate(QuestionForm questionForm) {
+	public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) { //참->에러가 발생, 유효성체크에서 에러가 발생
+			return "question_form";
+		}
 		
 		// Service 에서 db에 질문을 저장하는 메소드를 호출
 		questionService.createQuestion(questionForm.getSubject(), questionForm.getContent());
