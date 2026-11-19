@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gyojincompany.sbb.dto.QuestionDto;
 import com.gyojincompany.sbb.entity.Question;
@@ -55,9 +57,21 @@ public class QuestionController {
 		return "question_detail";
 	}
 	
-	@GetMapping("/create")
+	@GetMapping("/create") // /question/create -> 질문등록 폼 페이지를 보여달라는 요청
 	public String questionCreate() {
 		return "question_form";
 	}
+	
+	@PostMapping("/create") //요청의 이름은 같으나 get, post 방식이 다르므로 같은 요청이름으로 생성 가능
+	public String questionCreate(@RequestParam(value = "subject") String subject, 
+			@RequestParam(value = "content") String content) {
+		
+		// Service 에서 db에 질문을 저장하는 메소드를 호출
+		questionService.createQuestion(subject, content);
+		
+		return "redirect:/question/list";
+		
+	}
+	
 	
 }

@@ -1,5 +1,6 @@
 package com.gyojincompany.sbb.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -49,5 +50,17 @@ public class QuestionService {
 			 return null;
 		 }
 	}
+	
+	//질문글을 등록하는(DB에 저장하는) 메소드
+	public void createQuestion(String subject, String content) {
+		
+		Question question = new Question();
+		question.setSubject(subject);
+		question.setContent(content);
+		question.setCreateDate(LocalDateTime.now());
+		
+		questionRepository.save(question);
+	}
+	
 	
 }
